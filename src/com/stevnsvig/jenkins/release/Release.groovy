@@ -16,11 +16,11 @@ class Release {
 
 
     String  get_branch_type(String branchName) {
-        devPattern = '.*development'
-        releasePattern = '.*release/.*'
-        featurePattern = '.*feature/.*'
-        hotfixPattern = '.*hotfix/.*'
-        masterPattern = '.*master'
+        def devPattern = '.*development'
+        def releasePattern = '.*release/.*'
+        def featurePattern = '.*feature/.*'
+        def hotfixPattern = '.*hotfix/.*'
+        def masterPattern = '.*master'
         if (branchName =~ devPattern) {
             return devBranchName
         } else if (branchName =~ releasePattern) {
