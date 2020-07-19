@@ -24,7 +24,7 @@ class Release {
         if (branchName =~ devPattern) {
             return this.devBranchName
         } else if (branchName =~ releasePattern) {
-            return this.relBranchName
+            return this.releaseBranchName
         } else if (branchName =~ masterPattern) {
             return masterBranchName
         } else if (branchName =~ featurePattern) {
@@ -38,7 +38,7 @@ class Release {
     String  get_branch_deployment_environment(String branchType) {
         if (branchType == this.devBranchName) {
             return devBranchName
-        } else if (branchType == relBranchName) {
+        } else if (branchType == releaseBranchName) {
             return 'staging'
         } else if (branchType == masterBranchName) {
             return 'prod'
