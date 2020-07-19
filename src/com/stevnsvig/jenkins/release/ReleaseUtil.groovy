@@ -22,7 +22,7 @@ class ReleaseUtil {
     static String sandboxEnv = 'sandbox'
     static String prodEnv = 'production'
 
-    static String get_branch_type(String branchName) {
+    static String getBranchType(String branchName) {
         def devPattern = '.*development'
         def releasePattern = '.*release/.*'
         def featurePattern = '.*feature/.*'
@@ -45,7 +45,7 @@ class ReleaseUtil {
         return ''
     }
 
-    static String get_branch_deployment_environment(String branchType) {
+    static String getBranchDeploymentEnvironment(String branchType) {
         switch(branchType) {
             default:
                 return ReleaseUtil.devEnv
@@ -63,5 +63,9 @@ class ReleaseUtil {
                 return ReleaseUtil.prodEnv
             break
         }
+    }
+
+    static String getGitTag() {
+        return "${sh(returnStdout: true, script: 'git tag --sort version:refname | tail -1').trim()}"
     }
 }
