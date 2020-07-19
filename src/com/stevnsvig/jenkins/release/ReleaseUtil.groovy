@@ -6,12 +6,13 @@ package com.stevnsvig.jenkins.release
 /**@
   * Functions to ease Release process
   */
-class Release {
+class ReleaseUtil {
 
     // branches
     static String devBranchName = 'dev'
     static String releaseBranchName = 'release'
     static String masterBranchName = 'master'
+    static String prodBranchName = 'master'
     static String hotfixBranchName = 'hotfix'
     static String featureBranchName = 'feature'
 
@@ -27,16 +28,19 @@ class Release {
         def featurePattern = '.*feature/.*'
         def hotfixPattern = '.*hotfix/.*'
         def masterPattern = '.*master'
+        def prodPattern = '.*production'
         if (branchName =~ devPattern) {
-            return Release.devBranchName
+            return ReleaseUtil.devBranchName
         } else if (branchName =~ releasePattern) {
-            return Release.releaseBranchName
+            return ReleaseUtil.releaseBranchName
         } else if (branchName =~ masterPattern) {
-            return Release.masterBranchName
+            return ReleaseUtil.prodBranchName
+        } else if (branchName =~ masterPattern) {
+            return ReleaseUtil.prodBranchName
         } else if (branchName =~ featurePattern) {
-            return Release.featureBranchName
+            return ReleaseUtil.featureBranchName
         } else if (branchName =~ hotfixPattern) {
-            return Release.hotfixBranchName
+            return ReleaseUtil.hotfixBranchName
         }
         return ''
     }
@@ -44,16 +48,19 @@ class Release {
     static String get_branch_deployment_environment(String branchType) {
         switch(branchType) {
             default:
-                return Release.devEnv
+                return ReleaseUtil.devEnv
             break
-            case Release.devBranchName:
-                return Release.devEnv
+            case ReleaseUtil.devBranchName:
+                return ReleaseUtil.devEnv
             break
-            case Release.releaseBranchName:
-                return Release.testEnv
+            case ReleaseUtil.releaseBranchName:
+                return ReleaseUtil.testEnv
             break
-            case Release.masterBranchName:
-                return Release.prodEnv
+            case ReleaseUtil.featureBranchName:
+                return ReleaseUtil.sandboxEnv
+            break
+            case ReleaseUtil.masterBranchName:
+                return ReleaseUtil.prodEnv
             break
         }
     }
