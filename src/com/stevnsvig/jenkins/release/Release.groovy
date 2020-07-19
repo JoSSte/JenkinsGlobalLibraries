@@ -8,14 +8,20 @@ package com.stevnsvig.jenkins.release
   */
 class Release {
 
+    // branches
     String devBranchName = 'dev'
     String releaseBranchName = 'release'
     String masterBranchName = 'master'
     String hotfixBranchName = 'hotfix'
     String featureBranchName = 'feature'
 
+    //build environments
+    String devEnv = 'development'
+    String testEnv = 'test'
+    String sandboxEnv = 'sandbox'
+    String prodEnv = 'production'
 
-    String  get_branch_type(String branchName) {
+    static String get_branch_type(String branchName) {
         def devPattern = '.*development'
         def releasePattern = '.*release/.*'
         def featurePattern = '.*feature/.*'
@@ -35,7 +41,7 @@ class Release {
         return ''
     }
 
-    String  get_branch_deployment_environment(String branchType) {
+    static String get_branch_deployment_environment(String branchType) {
         if (branchType == this.devBranchName) {
             return this.devBranchName
         } else if (branchType == this.releaseBranchName) {
