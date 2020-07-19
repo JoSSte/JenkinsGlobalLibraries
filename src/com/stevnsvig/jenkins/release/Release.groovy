@@ -8,11 +8,11 @@ package com.stevnsvig.jenkins.release
   */
 class Release {
 
-    String devBranchName = 'dev'
-    String releaseBranchName = 'release'
-    String masterBranchName = 'master'
-    String hotfixBranchName = 'hotfix'
-    String featureBranchName = 'feature'
+    def String devBranchName = 'dev'
+    def String releaseBranchName = 'release'
+    def String masterBranchName = 'master'
+    def String hotfixBranchName = 'hotfix'
+    def String featureBranchName = 'feature'
 
 
     String  get_branch_type(String branchName) {
