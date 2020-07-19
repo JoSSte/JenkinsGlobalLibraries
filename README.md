@@ -27,13 +27,15 @@ You can refer to [the Jenkins book](https://www.jenkins.io/doc/book/pipeline/sha
 Using the functions defined is as easy as calling `Release.*`
 
 For instance, here is an example of sending the globals to the script:
-```
+
+```groovy
 def branch_type = Release.get_branch_type "${env.BRANCH_NAME}"
 def branch_deployment_environment = Release.get_branch_deployment_environment branch_type
 ```
 
 ... and then you can use the variables to check for what to do either scripted:
-```
+
+```groovy
 if (branch_deployment_environment) {
     stage('deploy') {
         if (branch_deployment_environment == Release.prodEnv) {
@@ -56,9 +58,10 @@ if (branch_deployment_environment) {
     }
 }
 ```
+
 ... or in a Declarative Pipeline:
 
-```
+```groovy
 pipeline {
     stages {
         stage ('Integration Tests') {
