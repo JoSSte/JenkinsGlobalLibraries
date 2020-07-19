@@ -28,28 +28,31 @@ class Release {
         def hotfixPattern = '.*hotfix/.*'
         def masterPattern = '.*master'
         if (branchName =~ devPattern) {
-            return this.devBranchName
+            return Release.devBranchName
         } else if (branchName =~ releasePattern) {
-            return this.releaseBranchName
+            return Release.releaseBranchName
         } else if (branchName =~ masterPattern) {
-            return this.masterBranchName
+            return Release.masterBranchName
         } else if (branchName =~ featurePattern) {
-            return this.featureBranchName
+            return Release.featureBranchName
         } else if (branchName =~ hotfixPattern) {
-            return this.hotfixBranchName
+            return Release.hotfixBranchName
         }
         return ''
     }
 
     static String get_branch_deployment_environment(String branchType) {
-        if (branchType == this.devBranchName) {
-            return this.devBranchName
-        } else if (branchType == this.releaseBranchName) {
-            return 'staging'
-        } else if (branchType == this.masterBranchName) {
-            return 'prod'
+        switch(branchType) {
+            default:
+            case Release.devBranchName:
+                return Release.devEnv
+            break
+            case Release.releaseBranchName:
+                return Release.testEnv
+            break
+            case Release.masterBranchName
+                return Release.prodEnv
+            break
         }
-        return ''
     }
-
 }
