@@ -26,21 +26,21 @@ class Release {
         } else if (branchName =~ releasePattern) {
             return this.releaseBranchName
         } else if (branchName =~ masterPattern) {
-            return masterBranchName
+            return this.masterBranchName
         } else if (branchName =~ featurePattern) {
-            return featureBranchName
+            return this.featureBranchName
         } else if (branchName =~ hotfixPattern) {
-            return  hotfixBranchName
+            return this.hotfixBranchName
         }
         return ''
     }
 
     String  get_branch_deployment_environment(String branchType) {
         if (branchType == this.devBranchName) {
-            return devBranchName
-        } else if (branchType == releaseBranchName) {
+            return this.devBranchName
+        } else if (branchType == this.releaseBranchName) {
             return 'staging'
-        } else if (branchType == masterBranchName) {
+        } else if (branchType == this.masterBranchName) {
             return 'prod'
         }
         return ''
