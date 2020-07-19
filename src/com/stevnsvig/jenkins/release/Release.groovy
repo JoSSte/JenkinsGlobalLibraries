@@ -50,7 +50,7 @@ class Release {
             case Release.releaseBranchName:
                 return Release.testEnv
             break
-            case Release.masterBranchName
+            case Release.masterBranchName:
                 return Release.prodEnv
             break
         }
