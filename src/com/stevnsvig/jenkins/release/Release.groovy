@@ -44,6 +44,8 @@ class Release {
     static String get_branch_deployment_environment(String branchType) {
         switch(branchType) {
             default:
+                return Release.devEnv
+            break
             case Release.devBranchName:
                 return Release.devEnv
             break
