@@ -9,17 +9,17 @@ package com.stevnsvig.jenkins.release
 class Release {
 
     // branches
-    String devBranchName = 'dev'
-    String releaseBranchName = 'release'
-    String masterBranchName = 'master'
-    String hotfixBranchName = 'hotfix'
-    String featureBranchName = 'feature'
+    static String devBranchName = 'dev'
+    static String releaseBranchName = 'release'
+    static String masterBranchName = 'master'
+    static String hotfixBranchName = 'hotfix'
+    static String featureBranchName = 'feature'
 
     //build environments
-    String devEnv = 'development'
-    String testEnv = 'test'
-    String sandboxEnv = 'sandbox'
-    String prodEnv = 'production'
+    static String devEnv = 'development'
+    static String testEnv = 'test'
+    static String sandboxEnv = 'sandbox'
+    static String prodEnv = 'production'
 
     static String get_branch_type(String branchName) {
         def devPattern = '.*development'
