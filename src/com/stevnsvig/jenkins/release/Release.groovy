@@ -8,11 +8,11 @@ package com.stevnsvig.jenkins.release
   */
 class Release {
 
-    def String devBranchName = 'dev'
-    def String releaseBranchName = 'release'
-    def String masterBranchName = 'master'
-    def String hotfixBranchName = 'hotfix'
-    def String featureBranchName = 'feature'
+    String devBranchName = 'dev'
+    String releaseBranchName = 'release'
+    String masterBranchName = 'master'
+    String hotfixBranchName = 'hotfix'
+    String featureBranchName = 'feature'
 
 
     String  get_branch_type(String branchName) {
@@ -22,9 +22,9 @@ class Release {
         def hotfixPattern = '.*hotfix/.*'
         def masterPattern = '.*master'
         if (branchName =~ devPattern) {
-            return devBranchName
+            return this.devBranchName
         } else if (branchName =~ releasePattern) {
-            return relBranchName
+            return this.relBranchName
         } else if (branchName =~ masterPattern) {
             return masterBranchName
         } else if (branchName =~ featurePattern) {
@@ -36,7 +36,7 @@ class Release {
     }
 
     String  get_branch_deployment_environment(String branchType) {
-        if (branchType == devBranchName) {
+        if (branchType == this.devBranchName) {
             return devBranchName
         } else if (branchType == relBranchName) {
             return 'staging'
