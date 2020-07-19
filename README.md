@@ -15,22 +15,22 @@ The import is as follows:
 
 ```
 @Library('JoSSteJenkinsGlobalLibraries')
-import com.stevnsvig.jenkins.release.Release
+import com.stevnsvig.jenkins.release.ReleaseUtil
 ...
 ```
-Note that this is all that is required for the [Release class](/src/com/stevnsvig/jenkins/release/Release.groovy) since all the methods and variables are static.
+Note that this is all that is required for the [ReleaseUtil class](/src/com/stevnsvig/jenkins/release/ReleaseUtil.groovy) since all the methods and variables are static.
 
 You can refer to [the Jenkins book](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#accessing-steps) about non-static imports.
 
 
 ## (Re-)Using your functions
-Using the functions defined is as easy as calling `Release.*`
+Using the functions defined is as easy as calling `ReleaseUtil.*`
 
 For instance, here is an example of sending the globals to the script:
 
 ```groovy
-def branch_type = Release.get_branch_type "${env.BRANCH_NAME}"
-def branch_deployment_environment = Release.get_branch_deployment_environment branch_type
+def branch_type = ReleaseUtil.get_branch_type "${env.BRANCH_NAME}"
+def branch_deployment_environment = ReleaseUtil.get_branch_deployment_environment branch_type
 ```
 
 ... and then you can use the variables to check for what to do either scripted:
@@ -38,7 +38,7 @@ def branch_deployment_environment = Release.get_branch_deployment_environment br
 ```groovy
 if (branch_deployment_environment) {
     stage('deploy') {
-        if (branch_deployment_environment == Release.prodEnv) {
+        if (branch_deployment_environment == ReleaseUtil.prodEnv) {
             timeout(time: 1, unit: 'DAYS') {
                 input "Deploy to ${branch_deployment_environment} ?"
             }
@@ -48,7 +48,7 @@ if (branch_deployment_environment) {
         }
     }
 
-    if (branch_deployment_environment != Release.prodEnv) {
+    if (branch_deployment_environment != ReleaseUtil.prodEnv) {
         stage('integration tests') {
             node {
                 echo "Running integration tests in ${branch_deployment_environment}"
@@ -66,7 +66,7 @@ pipeline {
     stages {
         stage ('Integration Tests') {
             when {
-                expression { branch_deployment_environment == Release.testEnv }
+                expression { branch_deployment_environment == ReleaseUtil.testEnv }
             }
             steps {
                 echo "integration tests go here!"            
