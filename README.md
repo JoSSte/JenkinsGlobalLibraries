@@ -85,3 +85,6 @@ pipeline {
     }
 }
 ```
+## Further Reading
+
+* https://github.com/jenkinsci/JenkinsPipelineUnit#testing-shared-libraries
