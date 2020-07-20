@@ -104,7 +104,9 @@
             </plugin>
         </plugins>
     </build>
-
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <scm>
         <developerConnection></developerConnection>
         <url>https://github.com/JoSSte/JenkinsGlobalLibraries.git</url>
