@@ -39,7 +39,7 @@ class ReleaseUtilGetBranchTypeTest extends GroovyTestCase {
     @Test
     void testGetBranchType() {
         def outcome = ReleaseUtil.getBranchType(this.input)
-        println "input: ${input} expected: ${expected} outcome: ${outcome}"
+        //println "input: ${input} expected: ${expected} outcome: ${outcome}"
         assert outcome == this.expected
     }
 }

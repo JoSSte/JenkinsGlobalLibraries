@@ -42,7 +42,7 @@ class ReleaseUtilGetBranchDeployEnvTest extends GroovyTestCase {
     @Test
     void testGetBranchDeploymentEnvironment() {
         def outcome = ReleaseUtil.getBranchDeploymentEnvironment(this.input)
-        println "input: ${input} expected: ${expected} outcome: ${outcome}"
+        //println "input: ${input} expected: ${expected} outcome: ${outcome}"
         assert outcome == this.expected
     }
 }
