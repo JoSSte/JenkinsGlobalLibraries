@@ -33,10 +33,10 @@ class ReleaseUtil {
             return ReleaseUtil.devBranchName
         } else if (branchName =~ releasePattern) {
             return ReleaseUtil.releaseBranchName
-        } else if (branchName =~ masterPattern) {
+        } else if (branchName =~ prodPattern) {
             return ReleaseUtil.prodBranchName
         } else if (branchName =~ masterPattern) {
-            return ReleaseUtil.prodBranchName
+            return ReleaseUtil.masterBranchName
         } else if (branchName =~ featurePattern) {
             return ReleaseUtil.featureBranchName
         } else if (branchName =~ hotfixPattern) {
