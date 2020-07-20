@@ -69,4 +69,9 @@ class ReleaseUtil {
         def stdout = "git tag --sort version:refname | tail -1".execute()
         return stdout.in.text
     }
+
+    static String getPWD() {
+        def stdout = "pwd".execute()
+        return stdout.in.text
+    }
 }
