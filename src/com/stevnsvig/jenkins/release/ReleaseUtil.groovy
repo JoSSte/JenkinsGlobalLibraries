@@ -12,7 +12,7 @@ class ReleaseUtil {
     static String devBranchName = 'dev'
     static String releaseBranchName = 'release'
     static String masterBranchName = 'master'
-    static String prodBranchName = 'master'
+    static String prodBranchName = 'production'
     static String hotfixBranchName = 'hotfix'
     static String featureBranchName = 'feature'
 
@@ -59,7 +59,9 @@ class ReleaseUtil {
             case ReleaseUtil.featureBranchName:
                 return ReleaseUtil.sandboxEnv
             break
+            case ReleaseUtil.hotfixBranchName:
             case ReleaseUtil.masterBranchName:
+            case ReleaseUtil.prodBranchName:
                 return ReleaseUtil.prodEnv
             break
         }
