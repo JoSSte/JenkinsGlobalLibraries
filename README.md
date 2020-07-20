@@ -13,12 +13,22 @@ Refer to [the Jenkins book](https://www.jenkins.io/doc/book/pipeline/shared-libr
 
 The import is as follows:
 
-```
+```groovy
 @Library('JoSSteJenkinsGlobalLibraries')
 import com.stevnsvig.jenkins.release.ReleaseUtil
 ...
 ```
+This requires the library to be configured in Jenkins.
+
+For more flexibility you could include it like this:
+```groovy
+library identifier: "JenkinsGlobalLibrary@1.0.0", retreiver: modernSCM(
+    [$lass: "GitSCMSource", remote: "https://github.com/JoSSte/JenkinsGlobalLibraries.git, credentialsId: "${SCM_CREDENTIALS}"])
+```
+
 Note that this is all that is required for the [ReleaseUtil class](/src/com/stevnsvig/jenkins/release/ReleaseUtil.groovy) since all the methods and variables are static.
+
+
 
 You can refer to [the Jenkins book](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#accessing-steps) about non-static imports.
 
