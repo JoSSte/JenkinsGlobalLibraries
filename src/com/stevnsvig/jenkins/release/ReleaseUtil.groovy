@@ -66,7 +66,7 @@ class ReleaseUtil {
     }
 
     static String getGitTag() {
-        stdout = script.sh(script: "git tag --sort version:refname | tail -1", returnStdout: true)
+        def stdout = "git tag --sort version:refname | tail -1".execute()
         return stdout.trim()
     }
 }
