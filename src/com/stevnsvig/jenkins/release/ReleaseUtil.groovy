@@ -29,17 +29,17 @@ class ReleaseUtil {
         def hotfixPattern = '.*hotfix/.*'
         def masterPattern = '.*master'
         def prodPattern = '.*production'
-        if (branchName =~ devPattern) {
+        if (branchName.toLowerCase() =~ devPattern) {
             return ReleaseUtil.devBranchName
-        } else if (branchName =~ releasePattern) {
+        } else if (branchName.toLowerCase() =~ releasePattern) {
             return ReleaseUtil.releaseBranchName
-        } else if (branchName =~ prodPattern) {
+        } else if (branchName.toLowerCase() =~ prodPattern) {
             return ReleaseUtil.prodBranchName
-        } else if (branchName =~ masterPattern) {
+        } else if (branchName.toLowerCase() =~ masterPattern) {
             return ReleaseUtil.masterBranchName
-        } else if (branchName =~ featurePattern) {
+        } else if (branchName.toLowerCase() =~ featurePattern) {
             return ReleaseUtil.featureBranchName
-        } else if (branchName =~ hotfixPattern) {
+        } else if (branchName.toLowerCase() =~ hotfixPattern) {
             return ReleaseUtil.hotfixBranchName
         }
         return ''
