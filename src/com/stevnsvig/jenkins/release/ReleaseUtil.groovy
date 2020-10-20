@@ -13,6 +13,7 @@ class ReleaseUtil {
     static String releaseBranchName = 'release'
     static String masterBranchName = 'master'
     static String prodBranchName = 'production'
+    static String testBranchName = 'test'
     static String hotfixBranchName = 'hotfix'
     static String featureBranchName = 'feature'
 
@@ -24,6 +25,7 @@ class ReleaseUtil {
 
     static String getBranchType(String branchName) {
         def devPattern = '.*development'
+        def testPattern = '.*test'
         def releasePattern = '.*release/.*'
         def featurePattern = '.*feature/.*'
         def hotfixPattern = '.*hotfix/.*'
@@ -31,6 +33,8 @@ class ReleaseUtil {
         def prodPattern = '.*production'
         if (branchName.toLowerCase() =~ devPattern) {
             return ReleaseUtil.devBranchName
+        } else if (branchName.toLowerCase() =~ testPattern) {
+            return ReleaseUtil.testBranchName
         } else if (branchName.toLowerCase() =~ releasePattern) {
             return ReleaseUtil.releaseBranchName
         } else if (branchName.toLowerCase() =~ prodPattern) {
@@ -56,6 +60,7 @@ class ReleaseUtil {
             case ReleaseUtil.releaseBranchName:
                 return ReleaseUtil.testEnv
             break
+            case ReleaseUtil.testBranchName:
             case ReleaseUtil.featureBranchName:
                 return ReleaseUtil.sandboxEnv
             break
