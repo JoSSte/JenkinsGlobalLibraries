@@ -76,4 +76,7 @@ class ReleaseUtil {
         def stdout = "pwd".execute()
         return stdout.in.text
     }
+    static String getBaseName(String tagOrBranch) {
+        def matcher = (tagOrBranch =~ /(?i)^[a-z]*(\d{1,3}.\d{1,3})/).find()
+    }
 }
