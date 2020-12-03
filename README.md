@@ -5,6 +5,10 @@ Libraries I use in some of my Jenkins pipelines to make life easier
 The functions so far are heavily inspired by [this repository](https://github.com/alexguzun/jenkins-pipeline-gitflow-maven/blob/master/Jenkinsfile), although I use it mainly in a multi-branch pipeline setup, so I have read [the jenkins documentation about shared libraries](https://www.jenkins.io/doc/book/pipeline/shared-libraries/) and come up with this, to try to keep my Pipeline scripts [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself).
 
 
+## Testing
+
+Executing `mvn test` in the project root will run all the defined test
+
 ## Setup
 
 Refer to [the Jenkins book](https://www.jenkins.io/doc/book/pipeline/shared-libraries/#using-libraries) for reference on setting up a scm repository as a source of your Jenkins Shared Libraries

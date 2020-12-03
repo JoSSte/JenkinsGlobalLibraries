@@ -81,7 +81,21 @@ class ReleaseUtil {
         def stdout = "pwd".execute()
         return stdout.in.text
     }
+
+    /*
+    returns the base name of an ant version string
+    i.e. if input is 'Release-1.0' 'release' is returned
+    */
     static String getBaseName(String tagOrBranch) {
-        def matcher = (tagOrBranch =~ /(?i)^[a-z]*(\d{1,3}.\d{1,3})/).find()
+        def matcher = tagOrBranch =~ /(?i)^(?<name>[a-z]*)-(?<version>\d{1,3}\.\d{1,3})/
+        def result = ''
+        try { 
+            matcher.matches()
+            result = matcher.group("name")
+        } catch(IllegalStateException ise) {
+            return ''
+        }
+        
+        return result.toLowerCase()
     }
 }
