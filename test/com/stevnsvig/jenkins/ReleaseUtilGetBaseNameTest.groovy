@@ -20,7 +20,7 @@ class ReleaseUtilGetBaseNameTest extends GroovyTestCase {
 
     @Parameters
     public static Collection<Object[]> data() {
-        def cases = new Object[7][2]
+        def cases = new Object[8][2]
         cases[0][0] = 'test-1.0'
         cases[0][1] = 'test'
         cases[1][0] = 'sandbox-1.0'
@@ -35,6 +35,8 @@ class ReleaseUtilGetBaseNameTest extends GroovyTestCase {
         cases[5][1] = ''
         cases[6][0] = 'feature/something-1.0'
         cases[6][1] = ''
+        cases[7][0] = 'test-2.0.0'
+        cases[7][1] = ''
 
         Arrays.asList(cases)
     }
