@@ -87,7 +87,7 @@ class ReleaseUtil {
     i.e. if input is 'Release-1.0' 'release' is returned
     */
     static String getBaseName(String tagOrBranch) {
-        def matcher = tagOrBranch =~ /(?i)^(?<name>[a-z]*)-(?<version>\d{1,3}\.\d{1,3})/
+        def matcher = tagOrBranch =~ /(?i)^(?<name>[a-z]*)(?:-(?<version>\d{1,3}\.\d{1,3}))?/
         def result = ''
         try { 
             matcher.matches()

@@ -29,8 +29,8 @@ class ReleaseUtilGetBaseNameTest extends GroovyTestCase {
         cases[2][1] = 'release'
         cases[3][0] = 'Release-2.0'
         cases[3][1] = 'release'
-        cases[4][0] = 'release'
-        cases[4][1] = ''
+        cases[4][0] = 'uat'
+        cases[4][1] = 'uat'
         cases[5][0] = '1.0.0'
         cases[5][1] = ''
         cases[6][0] = 'feature/something-1.0'
@@ -44,7 +44,7 @@ class ReleaseUtilGetBaseNameTest extends GroovyTestCase {
     @Test
     void testGetBaseName() {
         def outcome = ReleaseUtil.getBaseName(this.input)
-        //println "input: ${input} expected: ${expected} outcome: ${outcome}"
+        println "input: ${input} expected: ${expected} outcome: ${outcome}"
         assert outcome == this.expected
     }
 
