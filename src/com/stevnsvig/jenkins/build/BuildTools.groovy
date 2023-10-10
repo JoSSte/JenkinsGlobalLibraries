@@ -23,4 +23,44 @@ class BuildTools {
             }
         }
     }
+
+    /*
+     * delete failed and or aborted jobs
+     */
+    static void deleteJobs(ArrayList<String> jobnamelist, Boolean deleteFailed = true, Boolean deleteAborted = true){
+        for(String jobstring in jobnamelist) {
+            def joblist = getJobList(jobstring)
+            for(String jobname in joblist) {
+                print("Scanning job " + jobname + " for failed and aborted builds")
+                def job = Jenkins.instance.getItemByFullName(jobname) 
+                job.getBuilds().each {
+                    //print(it.getNumber())
+                    if((deleteFailed && it.result == Result.FAILURE) || (deleteAborted && it.result == Result.ABORTED)){
+                        print("Deleting job " + jobname + " run # " + it.getNumber())
+                        // Delete failed job
+                        it.delete()
+                    }
+                }
+            }
+        }
+    }
+
+    /*
+     * get list of jobs for a pipeline
+     */
+    static ArrayList<String> getJobList(String pipelineName) {
+
+        def hi = hudson.model.Hudson.instance;
+        def item = hi.getItemByFullName(pipelineName);
+        def jobs = item.getAllJobs();
+
+        def arr = new ArrayList<String>();
+
+        Iterator<?> iterator = jobs.iterator();
+        while (iterator.hasNext()) {
+            def job = iterator.next();
+            arr.add(pipelineName + "/" + job.name);
+        }
+        return arr;
+    }    
 }
